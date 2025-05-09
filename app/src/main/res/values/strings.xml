@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Mascotas</string>
+    <string name="registro_label">Registro</string>
+    <string-array name="tipos_reporte">
+        <item>Diario</item>
+        <item>Semanal</item>
+        <item>Mensual</item>
+    </string-array>
+
+    <string-array name="adoption_status_options">
+        <item>Disponible</item>
+        <item>Adoptado</item>
+        <item>En proceso</item>
+    </string-array>
+</resources>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Campos de información de la mascota -->
+    <TextView
+        android:id="@+id/tvPetInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Información de la Mascota"
+        android:textSize="18sp"
+        android:layout_marginBottom="8dp"/>
+
+    <EditText
+        android:id="@+id/etPetName"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="Nombre de la mascota"
+        android:inputType="text"
+        android:padding="12dp"
+        android:textSize="16sp"/>
+
+    <EditText
+        android:id="@+id/etPetAge"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="Edad de la mascota"
+        android:inputType="number"
+        android:padding="12dp"
+        android:textSize="16sp"/>
+
+    <EditText
+        android:id="@+id/etPetType"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="Tipo de mascota (Perro, Gato, etc.)"
+        android:inputType="text"
+        android:padding="12dp"
+        android:textSize="16sp"/>
+
+    <EditText
+        android:id="@+id/etPetBreed"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="Raza de la mascota"
+        android:inputType="text"
+        android:padding="12dp"
+        android:textSize="16sp"/>
+
+    <EditText
+        android:id="@+id/etPetHealthStatus"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="Estado de salud"
+        android:inputType="text"
+        android:padding="12dp"
+        android:textSize="16sp"/>
+
+    <EditText
+        android:id="@+id/etPetLocation"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="Ubicación"
+        android:inputType="text"
+        android:padding="12dp"
+        android:textSize="16sp"/>
+
+    <Spinner
+        android:id="@+id/spinnerAdoptionStatus"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:padding="12dp"/>
+
+    <!-- Campos de información del usuario -->
+    <TextView
+        android:id="@+id/tvUserInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Información del Usuario"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"/>
+
+    <EditText
+        android:id="@+id/correoUser"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="Correo electronico del usuario"
+        android:inputType="text"
+        android:padding="12dp"
+        android:textSize="16sp"/>
+
+    <EditText
+        android:id="@+id/etUserPhone"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="Número de celular"
+        android:inputType="phone"
+        android:padding="12dp"
+        android:textSize="16sp"/>
+
+    <!-- Botón para registrar -->
+    <Button
+        android:id="@+id/btnRegisterPet"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+    android:text="Registrar Mascota en Adopción"
+    android:textSize="16sp"
+    android:layout_marginTop="16dp"
+    android:padding="12dp"/>
+
+</LinearLayout>
+

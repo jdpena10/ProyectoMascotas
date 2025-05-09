@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Título de la actividad -->
+    <TextView
+        android:id="@+id/txtTituloVacunas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vacunas Registradas"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- RecyclerView para mostrar las vacunas -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewVacunas"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <!-- Botón para agregar nueva vacuna -->
+    <Button
+        android:id="@+id/btnAgregarVacuna"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Agregar Vacuna"
+        android:layout_marginTop="16dp"/>
+
+</LinearLayout>
