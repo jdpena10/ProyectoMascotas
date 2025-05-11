@@ -24,7 +24,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
     // Nombre y versión de la base de datos
     private static final String DATABASE_NAME = "Usuarios.db";
-    private static final int DATABASE_VERSION = 17;
+    private static final int DATABASE_VERSION = 21;
 
     // Tabla de usuarios
     private static final String TABLE_USERS = "users";
@@ -102,6 +102,33 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     private static final String USER_NAME = "user_name"; // Nombre del usuario
     private static final String USER_PHONE = "user_phone"; // Número de celular del usuario
     private static final String PET_TYPE = "pet_type";
+
+
+
+
+    // Tabla de registros de alimentación
+    private static final String TABLE_FOOD_LOG = "food_log";
+    private static final String COLUMN_FOOD_ID = "food_id";
+    private static final String COLUMN_FOOD_DATE = "food_date";
+    private static final String COLUMN_FOOD_TYPE = "food_type";
+    private static final String COLUMN_FOOD_AMOUNT = "food_amount";
+
+
+
+
+
+
+    // Tabla de cuidadores
+    private static final String TABLE_CARETAKERS = "caretakers";
+    private static final String COLUMN_CARETAKER_ID = "id";
+    private static final String COLUMN_CARETAKER_USER_ID = "user_id"; // FK que hace referencia a users
+    private static final String COLUMN_CARETAKER_EMAIL = "email";  // Trae el email del usuario
+    private static final String COLUMN_CARETAKER_ADDRESS = "address";  // Trae la dirección del usuario
+    private static final String COLUMN_CARETAKER_PROFILE_PICTURE = "profile_picture";
+    private static final String COLUMN_CARETAKER_AVAILABILITY = "availability";
+    private static final String COLUMN_CARETAKER_PHONE_NUMBER = "phone_number";
+
+
 
 
     public SQLiteHelper(Context context) {
@@ -187,6 +214,31 @@ public class SQLiteHelper extends SQLiteOpenHelper {
                 USER_NAME + " TEXT, " +
                 USER_PHONE + " TEXT)";
         db.execSQL(CREATE_ADOPTION_PETS_TABLE);
+
+
+        String CREATE_FOOD_LOG_TABLE = "CREATE TABLE " + TABLE_FOOD_LOG + " (" +
+                COLUMN_FOOD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                COLUMN_PET_ID + " INTEGER, " +
+                COLUMN_FOOD_DATE + " TEXT, " + // formato: YYYY-MM-DD
+                COLUMN_FOOD_TYPE + " TEXT, " +
+                COLUMN_FOOD_AMOUNT + " REAL, " +
+                "FOREIGN KEY(" + COLUMN_PET_ID + ") REFERENCES " + TABLE_PETS + "(" + COLUMN_PET_ID + ") ON DELETE CASCADE)";
+        db.execSQL(CREATE_FOOD_LOG_TABLE);
+
+
+
+        // Crear tabla de cuidadores
+        String CREATE_CARETAKERS_TABLE = "CREATE TABLE " + TABLE_CARETAKERS + "("
+                + COLUMN_CARETAKER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + COLUMN_CARETAKER_USER_ID + " INTEGER, "
+                + COLUMN_CARETAKER_EMAIL + " TEXT, "
+                + COLUMN_CARETAKER_ADDRESS + " TEXT, "
+                + COLUMN_CARETAKER_PROFILE_PICTURE + " TEXT, "
+                + COLUMN_CARETAKER_AVAILABILITY + " TEXT, "
+                + COLUMN_CARETAKER_PHONE_NUMBER + " TEXT, "  // Nuevo campo de número de celular
+                + "FOREIGN KEY (" + COLUMN_CARETAKER_USER_ID + ") REFERENCES " + TABLE_USERS + "(" + COLUMN_ID + ")"
+                + ")";
+        db.execSQL(CREATE_CARETAKERS_TABLE);
     }
 
     // Si la base de datos cambia de versión, eliminar las tablas y crearlas de nuevo
@@ -199,6 +251,8 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_VACCINES);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_CITAS);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_ADOPTION_PETS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_FOOD_LOG);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_CARETAKERS);
         onCreate(db);
     }
 
@@ -301,6 +355,16 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
 
 
+    //obtener el nombre, direccion y email a partir del userid
+    public Cursor getUserData(int userId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery(
+                "SELECT name, address, email FROM users WHERE id = ?",
+                new String[]{String.valueOf(userId)}
+        );
+    }
+
+
     // ========== MÉTODOS CRUD PARA MASCOTAS ==========
 
     public long insertPet(String petName, String petType, String petBreed, int petAge, int userId, double lat, double lon) {
@@ -399,49 +463,49 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     }
 
 
-    public List<Mascota> obtenerMascotas(int userId) {
-        List<Mascota> mascotas = new ArrayList<>();
-        SQLiteDatabase db = this.getReadableDatabase();
+        public List<Mascota> obtenerMascotas(int userId) {
+            List<Mascota> mascotas = new ArrayList<>();
+            SQLiteDatabase db = this.getReadableDatabase();
 
-        // Consulta SQL con el filtro para obtener solo las mascotas del usuario autenticado
-        String query = "SELECT " + COLUMN_PET_ID + ", " + COLUMN_PET_NAME + ", " + COLUMN_PET_TYPE + ", " +
-                COLUMN_PET_BREED + ", " + COLUMN_PET_AGE + ", " + COLUMN_USER_ID + ", " +
-                COLUMN_PET_LAT + ", " + COLUMN_PET_LON + " FROM " + TABLE_PETS +
-                " WHERE " + COLUMN_USER_ID + " = ?"; // Filtro para el userId
+            // Consulta SQL con el filtro para obtener solo las mascotas del usuario autenticado
+            String query = "SELECT " + COLUMN_PET_ID + ", " + COLUMN_PET_NAME + ", " + COLUMN_PET_TYPE + ", " +
+                    COLUMN_PET_BREED + ", " + COLUMN_PET_AGE + ", " + COLUMN_USER_ID + ", " +
+                    COLUMN_PET_LAT + ", " + COLUMN_PET_LON + " FROM " + TABLE_PETS +
+                    " WHERE " + COLUMN_USER_ID + " = ?"; // Filtro para el userId
 
-        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(userId)});
+            Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(userId)});
 
-        if (cursor.moveToFirst()) {
-            do {
-                Mascota mascota = new Mascota(
-                        cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_PET_ID)),   // ID
-                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PET_NAME)), // Nombre
-                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PET_TYPE)), // Tipo
-                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PET_BREED)), // Raza
-                        cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_PET_AGE)),   // Edad
-                        cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_USER_ID)),   // userId
-                        cursor.getDouble(cursor.getColumnIndexOrThrow(COLUMN_PET_LAT)), // Latitud
-                        cursor.getDouble(cursor.getColumnIndexOrThrow(COLUMN_PET_LON))  // Longitud
-                );
-                mascotas.add(mascota);
+            if (cursor.moveToFirst()) {
+                do {
+                    Mascota mascota = new Mascota(
+                            cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_PET_ID)),   // ID
+                            cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PET_NAME)), // Nombre
+                            cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PET_TYPE)), // Tipo
+                            cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_PET_BREED)), // Raza
+                            cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_PET_AGE)),   // Edad
+                            cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_USER_ID)),   // userId
+                            cursor.getDouble(cursor.getColumnIndexOrThrow(COLUMN_PET_LAT)), // Latitud
+                            cursor.getDouble(cursor.getColumnIndexOrThrow(COLUMN_PET_LON))  // Longitud
+                    );
+                    mascotas.add(mascota);
 
-                // Log para cada mascota obtenida
-                Log.d("Mascota", "ID: " + mascota.getId() +
-                        ", Nombre: " + mascota.getNombre() +
-                        ", Tipo: " + mascota.getTipo() +
-                        ", Raza: " + mascota.getRaza() +
-                        ", Edad: " + mascota.getEdad() +
-                        ", Lat: " + mascota.getLatitud() +
-                        ", Lon: " + mascota.getLongitud());
-            } while (cursor.moveToNext());
-        } else {
-            Log.d("Mascota", "No se encontraron mascotas para el usuario con ID: " + userId);
+                    // Log para cada mascota obtenida
+                    Log.d("Mascota", "ID: " + mascota.getId() +
+                            ", Nombre: " + mascota.getNombre() +
+                            ", Tipo: " + mascota.getTipo() +
+                            ", Raza: " + mascota.getRaza() +
+                            ", Edad: " + mascota.getEdad() +
+                            ", Lat: " + mascota.getLatitud() +
+                            ", Lon: " + mascota.getLongitud());
+                } while (cursor.moveToNext());
+            } else {
+                Log.d("Mascota", "No se encontraron mascotas para el usuario con ID: " + userId);
+            }
+
+            cursor.close();
+            db.close(); // Cerrar la base de datos después de la consulta
+            return mascotas;
         }
-
-        cursor.close();
-        db.close(); // Cerrar la base de datos después de la consulta
-        return mascotas;
-    }
 
     public void eliminarMascota(int id) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -1025,6 +1089,129 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         cursor.close();
         db.close();
         return petsList;
+    }
+
+
+
+
+
+    //------------------------------------------------------------------------------------------------------------------
+    //Metodos de la tabla de alimentacion
+    public void agregarRegistroAlimentacion(int petId, String fecha, String tipo, double cantidad) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_PET_ID, petId);
+        values.put(COLUMN_FOOD_DATE, fecha);
+        values.put(COLUMN_FOOD_TYPE, tipo);
+        values.put(COLUMN_FOOD_AMOUNT, cantidad);
+        db.insert(TABLE_FOOD_LOG, null, values);
+        db.close();
+    }
+    public List<String> sugerirHorarios(String raza, int edad) {
+        List<String> horarios = new ArrayList<>();
+
+        if (edad < 1) { // cachorro
+            horarios.add("08:00 AM");
+            horarios.add("01:00 PM");
+            horarios.add("06:00 PM");
+        } else if (edad < 7) { // adulto
+            horarios.add("09:00 AM");
+            horarios.add("06:00 PM");
+        } else { // senior
+            horarios.add("10:00 AM");
+            horarios.add("05:00 PM");
+        }
+
+        // Podrías ajustar por raza también
+        if (raza.equalsIgnoreCase("chihuahua")) {
+            horarios.add("08:00 PM"); // ejemplo para razas pequeñas
+        }
+
+        return horarios;
+    }
+    public boolean detectarCambiosEnHabitos(int petId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT AVG(" + COLUMN_FOOD_AMOUNT + ") as promedio FROM " + TABLE_FOOD_LOG +
+                " WHERE " + COLUMN_PET_ID + " = ? AND " + COLUMN_FOOD_DATE + " >= date('now','-7 days')";
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(petId)});
+
+        if (cursor.moveToFirst()) {
+            double promedio = cursor.getDouble(cursor.getColumnIndexOrThrow("promedio"));
+
+            // Suponiendo que el promedio normal es entre 150-250 gramos
+            if (promedio < 100 || promedio > 300) {
+                cursor.close();
+                return true;
+            }
+        }
+        cursor.close();
+        return false;
+    }
+
+
+
+
+    //--------------------------------------------------------------------------------------------------------------------
+    //tabla de cuidadores
+    public boolean insertCaretaker(int userId, String email, String address, String profilePicture, String phoneNumber, String availability) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_CARETAKER_USER_ID, userId); // Asociar el cuidador con el usuario
+        values.put(COLUMN_CARETAKER_EMAIL, email); // Traer email del usuario
+        values.put(COLUMN_CARETAKER_ADDRESS, address); // Traer dirección del usuario
+        values.put(COLUMN_CARETAKER_PROFILE_PICTURE, profilePicture);
+        values.put(COLUMN_CARETAKER_PHONE_NUMBER, phoneNumber);
+        values.put(COLUMN_CARETAKER_AVAILABILITY, availability);
+
+        long result = db.insert(TABLE_CARETAKERS, null, values);
+        db.close();
+        return result != -1; // true si fue exitoso, false si falló
+    }
+
+
+
+
+    // Verificar si ya hay un cuidador registrado con ese user_id
+    public boolean isCaretakerRegistered(int userId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM caretakers WHERE user_id = ?", new String[]{String.valueOf(userId)});
+        boolean exists = cursor.moveToFirst();
+        cursor.close();
+        return exists;
+    }
+
+
+    public ArrayList<String> obtenerTodosLosCuidadores() {
+        ArrayList<String> lista = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_CARETAKERS, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                //int userId = cursor.getInt(cursor.getColumnIndexOrThrow("user_id"));
+                String email = cursor.getString(cursor.getColumnIndexOrThrow("email"));
+                String address = cursor.getString(cursor.getColumnIndexOrThrow("address"));
+                String availability = cursor.getString(cursor.getColumnIndexOrThrow("availability"));
+                String phoneNumber = cursor.getString(cursor.getColumnIndexOrThrow("phone_number")); // Recuperar el número de celular
+
+                // Agregar los detalles del cuidador incluyendo el número de celular
+                String cuidador = "\nEmail: " + email + "\nDirección: " + address +
+                        "\nDisponibilidad: " + availability + "\nTeléfono: " + phoneNumber;
+                lista.add(cuidador);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+        return lista;
+    }
+
+
+    public boolean deleteCaretaker(int userId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        int rowsDeleted = db.delete(TABLE_CARETAKERS, COLUMN_CARETAKER_USER_ID + " = ?", new String[]{String.valueOf(userId)});
+        db.close();
+        return rowsDeleted > 0; // true si se eliminó al menos una fila
     }
 }
 

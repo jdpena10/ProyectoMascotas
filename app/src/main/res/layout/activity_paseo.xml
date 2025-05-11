@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:layout_marginTop="50dp">
+
+        <TextView
+            android:id="@+id/tv_seleccione_mascota"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Seleccione una mascota para pasear"
+            android:textSize="18sp"
+            android:textColor="#333333"
+            android:layout_marginBottom="16dp"
+            android:textAlignment="center"/>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_mascotas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:layout_marginBottom="32dp"
+            android:layout_gravity="center" />
+
+        <Button
+            android:id="@+id/btn_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Obtener Ubicación"
+            android:textColor="#ffffff"
+            android:textSize="16sp"
+            android:backgroundTint="#3F51B5"
+            android:layout_marginTop="16dp"
+            android:padding="12dp"
+            android:layout_gravity="center"
+            android:radius="12dp" />
+
+        <TextView
+            android:id="@+id/tv_latitud"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Latitud: "
+            android:textSize="16sp"
+            android:textColor="#333333"
+            android:paddingTop="16dp"
+            android:layout_marginTop="16dp"/>
+
+        <TextView
+            android:id="@+id/tv_longitud"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Longitud: "
+            android:textSize="16sp"
+            android:textColor="#333333"
+            android:paddingTop="8dp"
+            android:layout_marginTop="8dp"/>
+
+
+
+        <Button
+            android:id="@+id/btn_simular_movimiento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Simular Movimiento"
+            android:textColor="#ffffff"
+            android:textSize="16sp"
+            android:backgroundTint="#3F51B5"
+            android:layout_marginTop="16dp"
+            android:padding="12dp"
+            android:layout_gravity="center"
+            android:radius="12dp" />
+
+        <Button
+            android:id="@+id/btn_ver_ruta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ver Ruta en Google Maps"
+            android:textColor="#ffffff"
+            android:textSize="16sp"
+            android:backgroundTint="#3F51B5"
+            android:layout_marginTop="16dp"
+            android:padding="12dp"
+            android:layout_gravity="center"
+            android:radius="12dp" />
+
+
+    </LinearLayout>
+</ScrollView>
+
+
+
+

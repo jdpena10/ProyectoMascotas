@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Mapa ocupa todo el fondo -->
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Contenedor de los botones en la parte inferior -->
+    <LinearLayout
+        android:id="@+id/botonesLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="8dp"
+        android:background="#AAFFFFFF">
+
+        <Button
+            android:id="@+id/btnUbicacionActual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ubicación Actual"
+            android:layout_margin="4dp"/>
+
+        <Button
+            android:id="@+id/btnAgregarPunto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Agregar Punto"
+            android:layout_margin="4dp"/>
+
+        <Button
+            android:id="@+id/btnIniciarRecorrido"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Iniciar Recorrido"
+            android:layout_margin="4dp"/>
+    </LinearLayout>
+</RelativeLayout>

@@ -74,5 +74,12 @@
         <activity android:name=".ActivityCita" android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity android:name=".AddAdoptionPetActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity android:name=".AdoptionPetsListActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity android:name=".ActivityComida" android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity android:name=".ListaPaseadoresActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity android:name=".RegistrarCuidadorActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity android:name=".ListarCuidadoresActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity android:name=".PaseoMapActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity android:name=".PaseoActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity android:name=".RutaMapaActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
     </application>
 </manifest>

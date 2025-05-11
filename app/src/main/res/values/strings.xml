@@ -12,4 +12,10 @@
         <item>Adoptado</item>
         <item>En proceso</item>
     </string-array>
+
+    <string name="select_pet">Selecciona una mascota</string>
+    <string name="guardar">Guardar</string>
+    <string name="tipo_comida">Tipo de comida</string>
+    <string name="cantidad_en_gramos">Cantidad en gramos</string>
+    <string name="sugerencias_horarios">Sugerencias de horarios:</string>
 </resources>

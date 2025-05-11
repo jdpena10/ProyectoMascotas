@@ -1,0 +1,115 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <EditText
+            android:id="@+id/etNombre"
+            android:hint="Nombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:textSize="16sp"
+            android:layout_marginBottom="16dp"
+            android:minHeight="64dp"/>
+
+        <!-- Campo para la dirección del cuidador -->
+        <EditText
+            android:id="@+id/etAddress"
+            android:hint="Dirección"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:textSize="16sp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Campo para el correo electrónico -->
+        <EditText
+            android:id="@+id/etEmail"
+            android:hint="Correo Electrónico"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:textSize="16sp"
+            android:inputType="textEmailAddress"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Campo para el celular -->
+        <EditText
+            android:id="@+id/etPhone"
+            android:hint="Número de Celular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:textSize="16sp"
+            android:inputType="phone"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Campo para la disponibilidad del cuidador -->
+        <EditText
+            android:id="@+id/etAvailability"
+            android:hint="Disponibilidad (ej. Lunes a Viernes 9:00 AM - 5:00 PM)"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:textSize="16sp"
+            android:layout_marginBottom="16dp" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/ic_default_image"
+            android:id="@+id/flPhoto"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tvUploadPhoto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sube tu foto"
+                android:textSize="18sp"
+                android:textColor="@android:color/white"
+                android:gravity="center"
+                android:background="#66000000"
+                android:padding="8dp"/>
+
+            <ImageView
+                android:id="@+id/ivProfilePhoto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:scaleType="centerCrop"
+                android:visibility="gone"
+                android:contentDescription="Foto de Perfil"/>
+
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/btnRegistrarCuidador"
+            android:text="Registrarme como Cuidador"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:padding="12dp"
+            android:textSize="16sp"
+            android:minHeight="64dp"/>
+
+        <Button
+            android:id="@+id/btnEliminarCuidador"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Eliminar Registro como Cuidador"
+            android:layout_marginTop="16dp"/>
+
+    </LinearLayout>
+</ScrollView>
+
+
+
+

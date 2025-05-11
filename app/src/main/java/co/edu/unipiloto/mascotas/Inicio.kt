@@ -23,6 +23,10 @@ class Inicio : AppCompatActivity() {
     private lateinit var agendar_cita: Button
     private lateinit var registro_de_adopcion: Button
     private lateinit var lita_adopcion: Button
+    private lateinit var btn_alimentacion: Button
+    private lateinit var btn_paseadores: Button
+    private lateinit var btn_cuidador: Button
+    private lateinit var btn_paseo: Button
     //private lateinit var editTextNombreMascota: EditText  // EditText para el nombre de la mascota
     //private lateinit var adopcion_mascotas: Button
 
@@ -63,6 +67,10 @@ class Inicio : AppCompatActivity() {
         //aplicar_vacuna = findViewById(R.id.aplicar_vacuna)
         agendar_cita = findViewById(R.id.agendar_cita)
         registro_de_adopcion = findViewById(R.id.registro_de_adopcion)
+        btn_alimentacion = findViewById(R.id.btn_alimentacion)
+        btn_paseadores = findViewById(R.id.btn_paseadores)
+        btn_cuidador = findViewById(R.id.btn_cuidador)
+        btn_paseo = findViewById(R.id.btn_paseo)
 
         registro_de_adopcion.setOnClickListener {
             val intent = Intent(this, AddAdoptionPetActivity::class.java)
@@ -112,6 +120,29 @@ class Inicio : AppCompatActivity() {
             startActivity(intent)
         }
 
+
+        btn_alimentacion.setOnClickListener {
+            val intent = Intent(this, ActivityComida::class.java)
+            startActivity(intent)
+        }
+
+
+        btn_paseadores.setOnClickListener {
+            val intent = Intent(this, ListaPaseadoresActivity::class.java)
+            startActivity(intent)
+        }
+
+
+        btn_cuidador.setOnClickListener {
+            val intent = Intent(this, ListarCuidadoresActivity::class.java)
+            startActivity(intent)
+        }
+
+
+        btn_paseo.setOnClickListener {
+            val intent = Intent(this, PaseoActivity::class.java)
+            startActivity(intent)
+        }
 
         /*adopcion_mascotas.setOnClickListener {
             val intent = Intent(this, AdopcionMascotasActivity ::class.java)

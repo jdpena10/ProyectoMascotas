@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="24dp"
     android:background="#F5F5F5">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="start"
-        android:gravity="top"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
         android:layout_marginTop="50dp">
 
         <TextView
@@ -146,46 +149,45 @@
         android:textColor="@android:color/white"
         android:backgroundTint="#633fdd"/>
 
-
-
-    <!--<EditText
-        android:id="@+id/editTextNombreMascota"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Ingresa el nombre de la mascota"
-        android:inputType="text"/>
-
     <Button
-        android:id="@+id/btnConfirmarCita"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Confirmar Cita"
-        android:visibility="gone"
-        android:layout_marginTop="16dp"
-        android:layout_gravity="center"/>-->
-
-
-
-
-
-    <!--<Button
-        android:id="@+id/reportes"
+        android:id="@+id/btn_alimentacion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Reporte de actividad de mis mascotas"
+        android:text="Alimentacion de mis mascotas"
         android:layout_marginTop="16dp"
         android:textColor="@android:color/white"
         android:backgroundTint="#633fdd"/>
 
+
     <Button
-        android:id="@+id/graficos"
+        android:id="@+id/btn_paseadores"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Reporte de actividad de mis mascotas"
+        android:text="Paseadores de mascotas"
         android:layout_marginTop="16dp"
         android:textColor="@android:color/white"
-        android:backgroundTint="#633fdd"/>-->
-</LinearLayout>
+        android:backgroundTint="#633fdd"/>
+
+        <Button
+            android:id="@+id/btn_cuidador"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cuidadores"
+            android:layout_marginTop="16dp"
+            android:textColor="@android:color/white"
+            android:backgroundTint="#633fdd"/>
+
+        <Button
+            android:id="@+id/btn_paseo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pasear mascota"
+            android:layout_marginTop="16dp"
+            android:textColor="@android:color/white"
+            android:layout_marginBottom="50dp"
+            android:backgroundTint="#633fdd"/>
+      </LinearLayout>
+</ScrollView>
 
 
 

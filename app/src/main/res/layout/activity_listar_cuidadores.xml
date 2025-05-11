@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F9F9F9">
+
+    <!-- Título -->
+    <TextView
+        android:id="@+id/tvTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lista de Cuidadores"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#333"
+        android:gravity="center"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- Campo de búsqueda por dirección -->
+    <EditText
+        android:id="@+id/etBuscarDireccion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Buscar por localidad o barrio..."
+        android:drawableLeft="@android:drawable/ic_menu_search"
+        android:background="@android:drawable/edit_text"
+        android:padding="10dp"
+        android:layout_marginBottom="10dp"/>
+
+    <!-- Lista de cuidadores -->
+    <ListView
+        android:id="@+id/listViewCuidadores"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="1dp"/>
+
+    <!-- Botón para registrarse como cuidador -->
+    <Button
+        android:id="@+id/btnRegistrarseCuidador"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Registrarme como cuidador"
+        android:textAllCaps="false"
+        android:backgroundTint="#4CAF50"
+        android:textColor="#FFF"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="4dp"/>
+</LinearLayout>
+
+

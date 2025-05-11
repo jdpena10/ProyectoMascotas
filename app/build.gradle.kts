@@ -69,6 +69,8 @@ dependencies {
     implementation ("com.itextpdf:itextpdf:5.5.13.3")
     implementation ("com.github.PhilJay:MPAndroidChart:v3.0.3")
     implementation ("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
+    implementation ("com.google.android.flexbox:flexbox:3.0.0")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

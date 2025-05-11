@@ -86,5 +86,10 @@ public class Mascota {
     public void setLongitud(double longitud) {
         this.longitud = longitud;
     }
+
+    @Override
+    public String toString() {
+        return nombre; // o return nombre + " - " + raza;
+    }
 }
 
