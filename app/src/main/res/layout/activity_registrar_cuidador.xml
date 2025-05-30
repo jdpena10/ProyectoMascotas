@@ -15,10 +15,12 @@
             android:layout_height="wrap_content"
             android:padding="12dp"
             android:textSize="16sp"
+            android:textColor="#000000"
+            android:textColorHint="#757575"
+            android:background="#E0E0E0"
             android:layout_marginBottom="16dp"
-            android:minHeight="64dp"/>
+            android:minHeight="64dp" />
 
-        <!-- Campo para la dirección del cuidador -->
         <EditText
             android:id="@+id/etAddress"
             android:hint="Dirección"
@@ -26,9 +28,11 @@
             android:layout_height="wrap_content"
             android:padding="12dp"
             android:textSize="16sp"
+            android:textColor="#000000"
+            android:textColorHint="#757575"
+            android:background="#E0E0E0"
             android:layout_marginBottom="16dp" />
 
-        <!-- Campo para el correo electrónico -->
         <EditText
             android:id="@+id/etEmail"
             android:hint="Correo Electrónico"
@@ -37,9 +41,11 @@
             android:padding="12dp"
             android:textSize="16sp"
             android:inputType="textEmailAddress"
+            android:textColor="#000000"
+            android:textColorHint="#757575"
+            android:background="#E0E0E0"
             android:layout_marginBottom="16dp" />
 
-        <!-- Campo para el celular -->
         <EditText
             android:id="@+id/etPhone"
             android:hint="Número de Celular"
@@ -48,9 +54,11 @@
             android:padding="12dp"
             android:textSize="16sp"
             android:inputType="phone"
+            android:textColor="#000000"
+            android:textColorHint="#757575"
+            android:background="#E0E0E0"
             android:layout_marginBottom="16dp" />
 
-        <!-- Campo para la disponibilidad del cuidador -->
         <EditText
             android:id="@+id/etAvailability"
             android:hint="Disponibilidad (ej. Lunes a Viernes 9:00 AM - 5:00 PM)"
@@ -58,14 +66,17 @@
             android:layout_height="wrap_content"
             android:padding="12dp"
             android:textSize="16sp"
+            android:textColor="#000000"
+            android:textColorHint="#757575"
+            android:background="#E0E0E0"
             android:layout_marginBottom="16dp" />
 
         <FrameLayout
+            android:id="@+id/flPhoto"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/ic_default_image"
-            android:id="@+id/flPhoto"
             android:gravity="center">
 
             <TextView
@@ -77,17 +88,15 @@
                 android:textColor="@android:color/white"
                 android:gravity="center"
                 android:background="#66000000"
-                android:padding="8dp"/>
+                android:padding="8dp" />
 
             <ImageView
                 android:id="@+id/ivProfilePhoto"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_centerInParent="true"
                 android:scaleType="centerCrop"
                 android:visibility="gone"
-                android:contentDescription="Foto de Perfil"/>
-
+                android:contentDescription="Foto de Perfil" />
         </FrameLayout>
 
         <Button
@@ -98,17 +107,29 @@
             android:layout_marginTop="16dp"
             android:padding="12dp"
             android:textSize="16sp"
-            android:minHeight="64dp"/>
+            android:minHeight="64dp"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:background="#1976D2"
+            android:elevation="4dp" />
 
         <Button
             android:id="@+id/btnEliminarCuidador"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Eliminar Registro como Cuidador"
-            android:layout_marginTop="16dp"/>
+            android:layout_marginTop="16dp"
+            android:padding="12dp"
+            android:textSize="16sp"
+            android:minHeight="64dp"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:background="#D32F2F"
+            android:elevation="4dp" />
 
     </LinearLayout>
 </ScrollView>
+
 
 
 

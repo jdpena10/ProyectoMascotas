@@ -8,186 +8,228 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="24dp">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:padding="24dp"
-        android:layout_marginTop="50dp">
+        android:gravity="center_horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Bienvenido/a: "
-            android:textSize="26sp"
-            android:textStyle="bold"
-            android:textColor="#3B84F1"/>
-
-        <TextView
-            android:id="@+id/textv_nombre"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="26sp"
-            android:textStyle="bold"
-            android:textColor="#3B84F1"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/layout_usuario"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:paddingVertical="8dp"
-        android:visibility="gone">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Usuario:"
-            android:textSize="22dp"
-            android:textStyle="bold"
-            android:textColor="#333333"/>
-
-        <TextView
-            android:id="@+id/textv_usuario"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="22dp"
-            android:textColor="#666666"
-            android:layout_marginStart="8dp"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginBottom="50dp"
-        android:layout_marginTop="16dp">
-
-        <Button
-            android:id="@+id/btn_administracion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Administrar"
-            android:textSize="16dp"
-            android:padding="10dp"/>
-
-        <Button
-            android:id="@+id/btn_editar_perfil"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Perfil"
-            android:textSize="16dp"
-            android:padding="10dp"/>
-
-        <Button
-            android:id="@+id/btn_cerrar_sesion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cerrar Sesión"
-            android:textSize="16dp"
-            android:padding="10dp"/>
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/btn_registrarMascota"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Mis Mascotas"
-        android:layout_marginTop="16dp"
-        android:textColor="@android:color/white"
-        android:backgroundTint="#633fdd"/>
-
-    <Button
-        android:id="@+id/btn_buscarVeterinario"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Buscar Veterinarios"
-        android:layout_marginTop="16dp"
-        android:textColor="@android:color/white"
-        android:backgroundTint="#633fdd"/>
-
-    <Button
-        android:id="@+id/monitoreo_ejercicio"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Monitorear ejercicios de mascota"
-        android:layout_marginTop="16dp"
-        android:textColor="@android:color/white"
-        android:backgroundTint="#633fdd"/>
-
-    <Button
-        android:id="@+id/agendar_cita"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Agendar cita de mascota"
-        android:layout_marginTop="16dp"
-        android:textColor="@android:color/white"
-        android:backgroundTint="#633fdd"/>
-
-    <Button
-        android:id="@+id/registro_de_adopcion"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Registrar mascota para adopcion"
-        android:layout_marginTop="16dp"
-        android:textColor="@android:color/white"
-        android:backgroundTint="#633fdd"/>
-
-    <Button
-        android:id="@+id/lita_adopcion"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Mascotas en adopcion"
-        android:layout_marginTop="16dp"
-        android:textColor="@android:color/white"
-        android:backgroundTint="#633fdd"/>
-
-    <Button
-        android:id="@+id/btn_alimentacion"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Alimentacion de mis mascotas"
-        android:layout_marginTop="16dp"
-        android:textColor="@android:color/white"
-        android:backgroundTint="#633fdd"/>
-
-
-    <Button
-        android:id="@+id/btn_paseadores"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Paseadores de mascotas"
-        android:layout_marginTop="16dp"
-        android:textColor="@android:color/white"
-        android:backgroundTint="#633fdd"/>
-
-        <Button
-            android:id="@+id/btn_cuidador"
+        <!-- Encabezado -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cuidadores"
-            android:layout_marginTop="16dp"
-            android:textColor="@android:color/white"
-            android:backgroundTint="#633fdd"/>
+            android:orientation="vertical"
+            android:layout_marginTop="32dp"
+            android:padding="24dp"
+            android:background="#FFFFFF"
+            android:elevation="6dp"
+            android:layout_marginBottom="24dp"
+            android:radius="12dp"
+            android:backgroundTint="#FFFFFF">
 
-        <Button
-            android:id="@+id/btn_paseo"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bienvenido/a:"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="#0D47A1" />
+
+            <TextView
+                android:id="@+id/textv_nombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="#0D47A1"
+                android:layout_marginTop="4dp" />
+        </LinearLayout>
+
+        <!-- Usuario oculto -->
+        <LinearLayout
+            android:id="@+id/layout_usuario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Pasear mascota"
-            android:layout_marginTop="16dp"
-            android:textColor="@android:color/white"
-            android:layout_marginBottom="50dp"
-            android:backgroundTint="#633fdd"/>
-      </LinearLayout>
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingVertical="8dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Usuario:"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#424242" />
+
+            <TextView
+                android:id="@+id/textv_usuario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="18sp"
+                android:textColor="#616161"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
+
+        <!-- Botones superiores -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="24dp"
+            android:weightSum="3">
+
+            <Button
+                android:id="@+id/btn_administracion"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="Administrar"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:background="#1E88E5"
+                android:layout_marginHorizontal="4dp" />
+
+            <Button
+                android:id="@+id/btn_editar_perfil"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="Perfil"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:background="#43A047"
+                android:layout_marginHorizontal="4dp" />
+
+            <Button
+                android:id="@+id/btn_cerrar_sesion"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="Cerrar Sesión"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:background="#E53935"
+                android:layout_marginHorizontal="4dp" />
+        </LinearLayout>
+
+        <!-- Botones de navegación -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <Button
+                android:id="@+id/btn_registrarMascota"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Mis Mascotas"
+                android:layout_marginVertical="6dp"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:background="#3949AB" />
+
+            <Button
+                android:id="@+id/btn_buscarVeterinario"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Buscar Veterinarios"
+                android:layout_marginVertical="6dp"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:background="#5E35B1" />
+
+            <Button
+                android:id="@+id/monitoreo_ejercicio"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Monitorear ejercicios de mascota"
+                android:layout_marginVertical="6dp"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:background="#00897B" />
+
+            <Button
+                android:id="@+id/agendar_cita"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Agendar cita de mascota"
+                android:layout_marginVertical="6dp"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:background="#43A047" />
+
+            <Button
+                android:id="@+id/registro_de_adopcion"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Registrar mascota para adopción"
+                android:layout_marginVertical="6dp"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:background="#FB8C00" />
+
+            <Button
+                android:id="@+id/lita_adopcion"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Mascotas en adopción"
+                android:layout_marginVertical="6dp"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:background="#F4511E" />
+
+            <Button
+                android:id="@+id/btn_alimentacion"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Alimentación de mis mascotas"
+                android:layout_marginVertical="6dp"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:background="#6D4C41" />
+
+            <Button
+                android:id="@+id/btn_paseadores"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Paseadores de mascotas"
+                android:layout_marginVertical="6dp"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:background="#3949AB" />
+
+            <Button
+                android:id="@+id/btn_cuidador"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Cuidadores"
+                android:layout_marginVertical="6dp"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:background="#00838F" />
+
+            <Button
+                android:id="@+id/btn_paseo"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Pasear mascota"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="50dp"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:background="#1E88E5" />
+        </LinearLayout>
+
+    </LinearLayout>
 </ScrollView>
+
+
+
+
 
 
 

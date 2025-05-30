@@ -11,6 +11,7 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.Marker
@@ -50,8 +51,19 @@ class RutaMapaActivity : AppCompatActivity(), OnMapReadyCallback {
 
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL)
 
+        // Desactiva edificios en 3D
+        mMap.isBuildingsEnabled = false
+
         if (ruta.isNotEmpty()) {
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ruta.first(), 19f))
+            // Forzar vista completamente desde arriba
+            val cameraPosition = CameraPosition.Builder()
+                .target(ruta.first())
+                .zoom(17f)
+                .tilt(0f) // Sin inclinación
+                .bearing(0f) // Sin rotación
+                .build()
+
+            mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
 
             mMap.addPolyline(
                 PolylineOptions()
@@ -76,6 +88,7 @@ class RutaMapaActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
+
     private fun moverMarcador() {
         if (!isRunning) {
             isRunning = true
@@ -87,7 +100,7 @@ class RutaMapaActivity : AppCompatActivity(), OnMapReadyCallback {
                         handler.postDelayed(this, 700)
                     } else {
                         index = 0
-                        handler.postDelayed(this, 700)
+                        handler.postDelayed(this, 10)
                     }
                 }
             }
@@ -101,6 +114,7 @@ class RutaMapaActivity : AppCompatActivity(), OnMapReadyCallback {
         isRunning = false
     }
 }
+
 
 
 

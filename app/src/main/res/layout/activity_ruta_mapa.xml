@@ -18,9 +18,13 @@
         android:text="Ruta de la mascota:"
         android:padding="16dp"
         android:textSize="18sp"
+        android:textColor="#212121"
+        android:background="#CCFFFFFF"
         android:textStyle="bold"
-        android:background="#AAFFFFFF"
+        android:elevation="6dp"
         android:layout_gravity="top" />
 
 </FrameLayout>
+
+
 

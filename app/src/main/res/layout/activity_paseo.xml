@@ -22,15 +22,13 @@
             android:textAlignment="center"/>
 
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_mascotas"
+        <Spinner
+            android:id="@+id/spinner_mascotas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:paddingTop="16dp"
-            android:paddingBottom="16dp"
-            android:layout_marginBottom="32dp"
-            android:layout_gravity="center" />
+            android:layout_marginBottom="32dp"/>
+
 
         <Button
             android:id="@+id/btn_location"
@@ -84,7 +82,7 @@
             android:id="@+id/btn_ver_ruta"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Ver Ruta en Google Maps"
+            android:text="Ver Ruta"
             android:textColor="#ffffff"
             android:textSize="16sp"
             android:backgroundTint="#3F51B5"

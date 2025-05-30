@@ -7,34 +7,53 @@
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
-    <!-- Contenedor para los botones -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-        android:layout_gravity="bottom"
+        android:layout_alignParentBottom="true"
         android:layout_marginBottom="16dp"
-        android:background="@android:color/transparent">
+        android:background="@android:color/transparent"
+        android:paddingHorizontal="8dp"
+        android:weightSum="3">
 
         <Button
             android:id="@+id/btnVolver"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Volver"/>
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:text="Volver"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:background="#757575"
+            android:elevation="4dp"
+            android:layout_marginEnd="4dp" />
 
         <Button
             android:id="@+id/btnSimularMovimiento"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Iniciar simulacion"/>
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:text="Iniciar simulación"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:background="#0288D1"
+            android:elevation="4dp"
+            android:layout_marginHorizontal="4dp" />
 
         <Button
             android:id="@+id/btnEliminarZonaSegura"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Eliminar Zona Segura"/>
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:text="Eliminar Zona Segura"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:background="#D32F2F"
+            android:elevation="4dp"
+            android:layout_marginStart="4dp" />
     </LinearLayout>
 </RelativeLayout>

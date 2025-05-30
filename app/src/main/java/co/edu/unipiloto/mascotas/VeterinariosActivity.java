@@ -74,7 +74,7 @@ public class VeterinariosActivity extends AppCompatActivity implements OnMapRead
 
         btnVolver = findViewById(R.id.btnVolver);
         btnBuscarVeterinarios = findViewById(R.id.btnBuscarVeterinarios);
-        recyclerViewVeterinarios = findViewById(R.id.recyclerViewVeterinarios);
+        //recyclerViewVeterinarios = findViewById(R.id.recyclerViewVeterinarios);
 
         recyclerViewVeterinarios.setLayoutManager(new LinearLayoutManager(this));
 
@@ -107,7 +107,7 @@ public class VeterinariosActivity extends AppCompatActivity implements OnMapRead
             mapFragment.getMapAsync(this);
         }
 
-        btnAgendarCita = findViewById(R.id.btnAgendarCita);
+        //btnAgendarCita = findViewById(R.id.btnAgendarCita);
         btnAgendarCita.setOnClickListener(v -> {
             if (veterinarioSeleccionado != null) {
                 // Mostrar mensaje

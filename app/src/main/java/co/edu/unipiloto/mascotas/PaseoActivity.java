@@ -10,7 +10,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Looper;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
@@ -29,7 +33,7 @@ import java.util.List;
 
 public class PaseoActivity extends AppCompatActivity {
 
-    private FusedLocationProviderClient fusedLocationClient;
+    private FusedLocationProviderClient fusedLocationClient;//servicios de Google Play
     private LocationRequest locationRequest;
     private LocationCallback locationCallback;
 
@@ -39,9 +43,9 @@ public class PaseoActivity extends AppCompatActivity {
     private final List<LatLng> rutaMascota = new ArrayList<>();
     private LatLng ultimaUbicacionReal = null;
     private SQLiteHelper dbHelper;
+    private Spinner spinnerMascotas;
+    private ArrayAdapter<String> spinnerAdapter;
     private List<Mascota> listaMascotas = new ArrayList<>();
-    private RecyclerView recyclerViewMascotas;
-    private MascotaAdapter mascotaAdapter;
     private Mascota mascotaSeleccionada;
 
     @Override
@@ -62,29 +66,21 @@ public class PaseoActivity extends AppCompatActivity {
         btnSimularMovimiento.setOnClickListener(v -> simularMovimiento());
 
         dbHelper = new SQLiteHelper(this);
-        recyclerViewMascotas = findViewById(R.id.recycler_mascotas);
-        recyclerViewMascotas.setLayoutManager(new LinearLayoutManager(this));
+        spinnerMascotas = findViewById(R.id.spinner_mascotas);
 
-        mascotaAdapter = new MascotaAdapter(new ArrayList<>(), dbHelper, new MascotaAdapter.OnMascotaClickListener() {
-            @Override
-            public void onMascotaClick(Mascota mascota) {
-                mascotaSeleccionada = mascota;
-                Toast.makeText(PaseoActivity.this, "Mascota seleccionada: " + mascota.getNombre(), Toast.LENGTH_SHORT).show();
-            }
-        });
-        recyclerViewMascotas.setAdapter(mascotaAdapter);
         cargarMascotas();
 
-
-
+        //obtener actualizaciones frecuentes
         locationRequest = LocationRequest.create();
         locationRequest.setInterval(10000);
         locationRequest.setFastestInterval(5000);
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 
+        //se ejecuta cuando hay una nueva ubicacion
         locationCallback = new LocationCallback() {
             @Override
             public void onLocationResult(@NonNull LocationResult locationResult) {
+
                 for (android.location.Location location : locationResult.getLocations()) {
                     LatLng nuevaUbicacion = new LatLng(location.getLatitude(), location.getLongitude());
 
@@ -103,13 +99,16 @@ public class PaseoActivity extends AppCompatActivity {
     }
 
     private void obtenerUbicacion() {
+        //Verifica si la aplicación tiene permiso para acceder a la ubicación precisa
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
+            //Si no tiene el permiso, solicita el permiso al usuario y sale del metodo
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
             return;
         }
 
-        fusedLocationClient.getLastLocation().addOnSuccessListener(this, location -> {
+        //Obtener la ubicacion actual
+        fusedLocationClient.getLastLocation().addOnSuccessListener(this, location -> {//Solicita la última ubicación conocida que el sistema ya tenga guardada
             if (location != null) {
                 tvLatitud.setText("Latitud: " + location.getLatitude());
                 tvLongitud.setText("Longitud: " + location.getLongitude());
@@ -151,7 +150,7 @@ public class PaseoActivity extends AppCompatActivity {
 
     private void simularMovimiento() {
         LatLng ultimaUbicacion = rutaMascota.isEmpty() ?
-                new LatLng(4.7110, -74.0721) : rutaMascota.get(rutaMascota.size() - 1);
+                new LatLng(4.66716, -74.0826683) : rutaMascota.get(rutaMascota.size() - 1);
 
         double nuevaLatitud = ultimaUbicacion.latitude + 0.0001;
         double nuevaLongitud = ultimaUbicacion.longitude + 0.0001;
@@ -183,15 +182,35 @@ public class PaseoActivity extends AppCompatActivity {
 
 
     private void cargarMascotas() {
-        int userId = obtenerUserId();
-        List<Mascota> listaMascotas = dbHelper.obtenerMascotas(userId);
+        int userId = obtenerUserId(); // asegúrate de tener este método implementado
+        listaMascotas = dbHelper.obtenerMascotas(userId); // o usa obtenerTodasLasMascotas()
         Log.d("Mascotas", "Número de mascotas obtenidas: " + listaMascotas.size());
 
         if (listaMascotas.isEmpty()) {
             Log.d("Mascotas", "No se encontraron mascotas en la base de datos.");
         }
 
-        mascotaAdapter.actualizarLista(listaMascotas);
+        List<String> nombresMascotas = new ArrayList<>();
+        for (Mascota m : listaMascotas) {
+            nombresMascotas.add(m.getNombre());
+        }
+
+        spinnerAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, nombresMascotas);
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerMascotas.setAdapter(spinnerAdapter);
+
+        spinnerMascotas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                mascotaSeleccionada = listaMascotas.get(position);
+                Toast.makeText(PaseoActivity.this, "Mascota seleccionada: " + mascotaSeleccionada.getNombre(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                mascotaSeleccionada = null;
+            }
+        });
     }
 
 

@@ -24,13 +24,17 @@
             android:id="@+id/btnRegistrarZonaSegura"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="#388E3C"
             android:text="Registrar Zona Segura"
+            android:textStyle="bold"
             android:layout_marginEnd="16dp"/>
 
         <Button
             android:id="@+id/btnVolver"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="#CA8484"
+            android:textStyle="bold"
             android:text="Volver"/>
     </LinearLayout>
 </FrameLayout>

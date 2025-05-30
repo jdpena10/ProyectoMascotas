@@ -6,57 +6,64 @@
     android:padding="16dp"
     android:gravity="center">
 
-    <!-- Campo para ingresar Latitud -->
     <EditText
         android:id="@+id/etLatitude"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:hint="Ingrese la latitud"
         android:inputType="numberDecimal"
         android:digits="-0123456789."
-        android:padding="10dp"
-        android:background="@android:drawable/editbox_background" />
+        android:background="#E0E0E0"
+        android:padding="12dp"
+        android:layout_marginBottom="12dp"
+        android:textColor="#000000"
+        android:textColorHint="#757575" />
 
-    <!-- Campo para ingresar Longitud -->
     <EditText
         android:id="@+id/etLongitude"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:hint="Ingrese la longitud"
         android:inputType="numberDecimal"
         android:digits="-0123456789."
-        android:padding="10dp"
-        android:background="@android:drawable/editbox_background"
-        android:layout_marginTop="10dp" />
+        android:background="#E0E0E0"
+        android:padding="12dp"
+        android:layout_marginBottom="12dp"
+        android:textColor="#000000"
+        android:textColorHint="#757575" />
 
-    <!-- Campo para ingresar Radio -->
     <EditText
         android:id="@+id/etRadius"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:hint="Ingrese el radio (metros)"
         android:inputType="numberDecimal"
-        android:padding="10dp"
-        android:background="@android:drawable/editbox_background"
-        android:layout_marginTop="10dp" />
+        android:background="#E0E0E0"
+        android:padding="12dp"
+        android:layout_marginBottom="20dp"
+        android:textColor="#000000"
+        android:textColorHint="#757575" />
 
-    <!-- Botón para guardar zona segura -->
     <Button
         android:id="@+id/btnGuardar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:text="Guardar Zona Segura"
-        android:backgroundTint="@android:color/holo_blue_dark"
-        android:textColor="@android:color/white"
-        android:padding="12dp"
-        android:layout_marginTop="20dp" />
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:background="#1976D2"
+        android:elevation="4dp"
+        android:layout_marginBottom="16dp" />
 
-    <!-- Botón para ver el mapa -->
     <Button
         android:id="@+id/btnVerMapa"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
         android:text="Ver Mapa"
-        android:layout_marginTop="16dp"/>
-
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:background="#43A047"
+        android:elevation="4dp" />
 </LinearLayout>
+
+
